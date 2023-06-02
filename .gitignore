@@ -1,0 +1,4 @@
+# Ignorar archivos y carpetas relacionados con Composer
+/vendor/
+/composer.lock
+/composer.phar
