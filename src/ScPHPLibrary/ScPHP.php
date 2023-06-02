@@ -1178,7 +1178,7 @@ class ScPHP{
     }
     
     public static function str_regex_extraer($t,$expresion){
-        ScPHP::dev_depurar(DEPURAR,array($t,$expresion),'scphp-str_regex_extraer');
+        ScPHP::dev_depurar(DEPURAR,  array($t,$expresion),'scphp-str_regex_extraer');
         $expresion     = ScPHP::str_regex_corregir($expresion);
         $coincidencias = false;
     

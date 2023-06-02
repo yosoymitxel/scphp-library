@@ -22,13 +22,13 @@ Aquí encontramos funciones para hacer testeos rápidos siguiendo la filosofía 
 #### Ejemplos:
 
 ```
-ScPHP::dev_echo('Título', 'Valor') // <p id='' class='' style='' name=''>Título: Valor</p>
+ScPHP::dev_echo('Título', 'Valor'); // <p id='' class='' style='' name=''>Título: Valor</p>
 
 ScPHP::dev_var_dump([1,2]); // Imprime con una etiqueta <pre> un var_dump
 
 ScPHP::dev_activar_depurar_global(true); // Activa o desactiva el modo debug de php
 
-ScPHP::dev_echo_oculto('Esto solo lo veremos desde el HTML del sitio', true, 'id-para-ubicar-en-el-dom') // Imprime un var dump oculto dentro del DOM
+ScPHP::dev_echo_oculto('Esto solo lo veremos desde el HTML del sitio', true, 'id-para-ubicar-en-el-dom'); // Imprime un var dump oculto dentro del DOM
 ```
 
 ### 2) DOM
@@ -60,7 +60,6 @@ Sirve para el manejo de strings desde expresiones regulares, cambios de casos (l
 
 #### Ejemplos:
 ```
-ScPHP::str_reemplazar_expresion_regular('Hola mundo 123', '\d+',' '); //Hola mundo 
 
 ScPHP::str_quitar_espacios_blancos('Hola mundo,   esto es una      prueba'); //Holamundo,estoesunaprueba
 
@@ -68,9 +67,11 @@ ScPHP::str_sin_caracteres_especiales('Eso está ahí'); //Eso esta ahi
 
 ScPHP::str_contiene('Hola mundo', 'Hola'); // true
 
-ScPHP::str_extraer_expresion_regular('1 - Hola mundo 2','\d'); // [1,2]
+ScPHP::str_regex_extraer('1 - Hola mundo 2','\d'); // [1,2]
 
-ScPHP::str_incluye_expresion_regular('Hola mundo', '\d') // false
+ScPHP::str_regex_reemplazar('Hola mundo 123', '\d+',' '); //Hola mundo 
+
+ScPHP::str_regex_incluye('Hola mundo', '\d'); // false
 ```
 
 ### 6) JS
@@ -79,7 +80,7 @@ Opciones típicas de JS
 #### Ejemplos
 
 ```
-ScPHP::js_alert('texto')
+ScPHP::js_alert('texto');
 ```
 ### 7) IS
 Saber que tipo de dato es
@@ -87,7 +88,7 @@ Saber que tipo de dato es
 #### Ejemplos
 
 ```
-ScPHP::is_array(array('valor'))
+ScPHP::is_array(array('valor'));
 ```
 
 ### 8) ARR
@@ -96,7 +97,7 @@ Manejo de array.
 #### Ejemplos
 
 ```
-ScPHP::arr_incluye_expresion_regular(array('prueba'),'\w+')
+ScPHP::arr_incluye_regex(array('prueba'),'\w+')
 ```
 ### 9) FEC
 Manejo de fechas.

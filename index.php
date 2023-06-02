@@ -20,10 +20,12 @@
 
     //ScPHP::dev_var_dump(ScPHP::url_informacion_sitio_actual());
 
-    ScPHP::dev_var_dump(ScPHP::str_reemplazar_expresion_regular('Hola mundo 123', '\d+',' ')); //Hola mundo 
+    ScPHP::dev_var_dump(ScPHP::str_regex_reemplazar('Hola mundo 123', '\d+',' ')); //Hola mundo 
     ScPHP::dev_var_dump(ScPHP::str_quitar_espacios_blancos('Hola mundo,   esto es una      prueba')); //Holamundo,estoesunaprueba
     ScPHP::dev_var_dump(ScPHP::str_sin_caracteres_especiales('Eso está ahí')); //Eso esta ahi
     ScPHP::dev_var_dump(ScPHP::str_contiene('Hola mundo', 'Hola')); // true
-    ScPHP::dev_var_dump(ScPHP::str_extraer_expresion_regular('1 - Hola mundo 2','\d')); // [1,2]
-    ScPHP::dev_var_dump(ScPHP::str_incluye_expresion_regular('Hola mundo', '\d')); // false
+    ScPHP::dev_var_dump(ScPHP::str_regex_extraer('1 - Hola mundo 2','\d')); // [1,2]
+    ScPHP::dev_var_dump(ScPHP::str_regex_incluye('Hola mundo', '\d')); // false
+
+
 ?>
