@@ -48,11 +48,11 @@ ScPHP::url_informacion_sitio_actual()
 ```
 
 ### 4) SQL
-Manejo de sql (actualmente requiere una variable $pdoLibreria en un escope anterior para obtenerlo como global $pdoLibreria)
+Manejo de sql 
 
 #### Ejemplos:
 ```
-ScPHP::sql_lookup('SELECT * FROM usuario');
+ScPHP::sql_lookup($conexion,'SELECT * FROM usuario');
 ```
 
 ### 5) STR

@@ -826,8 +826,7 @@ class ScPHP{
         
         return $result;
     }
-    
-    //Falta corrección
+
     /**
      * This PHP function searches for images on Google based on a given search query and returns the
      * HTML image tags.
