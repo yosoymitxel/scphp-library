@@ -12,7 +12,7 @@ ScPHP::dev_var_dump('prueba')
 ```
 Donde `ScPHP::` es la librería y `dev_` indica que será del grupo development.
 ```
-sc_str_contiene('Hola mundo', 'Hola');
+ScPHP::str_contiene('Hola mundo', 'Hola');
 ```
 Donde `ScPHP::` es la librería y `str_` indica que será del grupo de manejo strings.
 
