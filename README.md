@@ -110,8 +110,10 @@ ScPHP::fec_formatear('2021-12-12 02:20:00','Y-m-d')
 ## Instalación 
 #### Al descargarla para añadir se incluye con un require
 
+Hay un ejemplo en el archivo ```index.php```
+
 ```
-require_once '/scPHP.php'
+use \ForceUTF8\Encoding;
 ```
 
 ## Ejecutando las pruebas
