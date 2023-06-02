@@ -113,7 +113,7 @@ ScPHP::fec_formatear('2021-12-12 02:20:00','Y-m-d')
 Hay un ejemplo en el archivo ```index.php```
 
 ```
-use \ForceUTF8\Encoding;
+use \ScPHPLibrary\ScPHP;
 ```
 
 ## Ejecutando las pruebas
