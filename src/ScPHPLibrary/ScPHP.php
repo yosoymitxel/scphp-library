@@ -668,7 +668,7 @@ class ScPHP{
             $str = trim(preg_replace('/\s+/', ' ', $str)); // supports line breaks inside <title>
             preg_match("/\<title\>(.*)\<\/title\>/i",$str,$title); // ignore case
           
-            return ScPHP::str_reemplazar_expresion_regular($title[1],'/( \- YouTube)/','');
+            return ScPHP::str_regex_reemplazar($title[1],'/( \- YouTube)/','');
         }
     }
     
@@ -684,8 +684,8 @@ class ScPHP{
         $expresionUrl     = '/(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=(\w+|\-)+|youtu\.be\/(\w+|\-)+)/';
         $expresionIdVideo = '/(((\?v=)[\w\-]+)|be\/\w+)/';
        
-        return (ScPHP::str_incluye_expresion_regular($urlYoutube,$expresionUrl)) ?
-            substr(ScPHP::str_extraer_expresion_regular($urlYoutube, $expresionIdVideo),3) :
+        return (ScPHP::str_regex_incluye($urlYoutube,$expresionUrl)) ?
+            substr(ScPHP::str_regex_extraer($urlYoutube, $expresionIdVideo),3) :
             false;
     }
     
@@ -714,8 +714,8 @@ class ScPHP{
         $videoId = ScPHP::url_get_youtube_video_id(ScPHP::str_quitar_espacios_blancos($link));
        
         if($videoId){
-            $altura = ScPHP::str_incluye_expresion_regular($altura,'\d+(\%|px|vh|vmin|vw)')?($altura):($altura.'px');
-            $ancho  = ScPHP::str_incluye_expresion_regular($ancho  ,'\d+(\%|px|vh|vmin|vw)')?($ancho)  :  ($ancho.'px');
+            $altura = ScPHP::str_regex_incluye($altura,'\d+(\%|px|vh|vmin|vw)')?($altura):($altura.'px');
+            $ancho  = ScPHP::str_regex_incluye($ancho  ,'\d+(\%|px|vh|vmin|vw)')?($ancho)  :  ($ancho.'px');
             $iframe = '
                 <div id="contenedor-iframe-yt-'.$videoId.'" class="'.$class.'">
                     <iframe id="iframe-yt-'.$videoId.'" style="width:'.$ancho.'; height:'.$altura.';" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen 
@@ -1142,7 +1142,7 @@ class ScPHP{
                 )
             ),
             'scphp-str_generar_enlaces_html_de_string');
-        $texto = ScPHP::str_reemplazar_expresion_regular($texto,'&amp;','&');
+        $texto = ScPHP::str_regex_reemplazar($texto,'&amp;','&');
       
         return preg_replace(
             '#((https?|ftp)://(\S*?\.\S*?))([\s)\[\]{},;"\':<]|\.\s|$)#i',
@@ -1151,9 +1151,9 @@ class ScPHP{
         );
     }
     
-    public static function str_reemplazar_expresion_regular($t,$expresion,$reemplazo){
-        $expresion = ScPHP::str_corregir_expresion_regular($expresion);
-        ScPHP::dev_depurar(DEPURAR,"t : $t expresion : $expresion reemplazo : $reemplazo ",'scphp-str_reemplazar_expresion_regular');
+    public static function str_regex_reemplazar($t,$expresion,$reemplazo){
+        $expresion = ScPHP::str_regex_corregir($expresion);
+        ScPHP::dev_depurar(DEPURAR,"t : $t expresion : $expresion reemplazo : $reemplazo ",'scphp-str_regex_reemplazar');
       
         return preg_replace(
             $expresion,
@@ -1162,27 +1162,27 @@ class ScPHP{
         );
     }
     
-    public static function str_incluye_expresion_regular($t,$expresion){
-        $expresion = ScPHP::str_corregir_expresion_regular($expresion);
-        ScPHP::dev_depurar(DEPURAR,array($t,$expresion),'scphp-str_incluye_expresion_regular');
+    public static function str_regex_incluye($t,$expresion){
+        $expresion = ScPHP::str_regex_corregir($expresion);
+        ScPHP::dev_depurar(DEPURAR,array($t,$expresion),'scphp-str_regex_incluye');
        
         return preg_match($expresion,$t);
     }
     
-    public static function str_corregir_expresion_regular($expresion){
-        ScPHP::dev_depurar(DEPURAR,array($expresion),'scphp-str_corregir_expresion_regular');
+    public static function str_regex_corregir($expresion){
+        ScPHP::dev_depurar(DEPURAR,array($expresion),'scphp-str_regex_corregir');
       
         return (ScPHP::str_inicia_con($expresion,'/') && ScPHP::str_finaliza_con($expresion,'/')) ?
             $expresion :
             '/'.$expresion.'/';
     }
     
-    public static function str_extraer_expresion_regular($t,$expresion){
-        ScPHP::dev_depurar(DEPURAR,array($t,$expresion),'scphp-str_extraer_expresion_regular');
-        $expresion     = ScPHP::str_corregir_expresion_regular($expresion);
+    public static function str_regex_extraer($t,$expresion){
+        ScPHP::dev_depurar(DEPURAR,array($t,$expresion),'scphp-str_regex_extraer');
+        $expresion     = ScPHP::str_regex_corregir($expresion);
         $coincidencias = false;
     
-        if(ScPHP::str_incluye_expresion_regular($t,$expresion)){
+        if(ScPHP::str_regex_incluye($t,$expresion)){
             preg_match_all($expresion,$t,$coincidencias,PREG_OFFSET_CAPTURE);
             $arrayResutl = array();
     
@@ -1217,12 +1217,12 @@ class ScPHP{
     
     public static function str_quitar_espacios_extra($t){
         ScPHP::dev_depurar(DEPURAR,$t,'scphp-str_quitar_espacios_extra');
-        return trim(ScPHP::str_reemplazar_expresion_regular($t,'/(\n|\s)+/',' '));
+        return trim(ScPHP::str_regex_reemplazar($t,'/(\n|\s)+/',' '));
     }
     
     public static function str_quitar_espacios_blancos($t){
         ScPHP::dev_depurar(DEPURAR,$t,'scphp-str_quitar_espacios_blancos');
-        return ScPHP::str_reemplazar_expresion_regular($t,'(\n|\s|\t|\r)+','');
+        return ScPHP::str_regex_reemplazar($t,'(\n|\s|\t|\r)+','');
     }
     
     /**
@@ -1264,14 +1264,14 @@ class ScPHP{
     
     /*###ARR###*/
     
-    public static function arr_incluye_expresion_regular($array,$expresion){
-        ScPHP::dev_depurar(DEPURAR,array($array,$expresion),'scphp-arr_incluye_expresion_regular');
+    public static function arr_incluye_regex($array,$expresion){
+        ScPHP::dev_depurar(DEPURAR,array($array,$expresion),'scphp-arr_incluye_regex');
     
         if (is_array($array) && isset($expresion{1})){
-            $expresion = ScPHP::str_corregir_expresion_regular($expresion);
+            $expresion = ScPHP::str_regex_corregir($expresion);
            
             foreach ($array as $valor){
-                if (ScPHP::str_incluye_expresion_regular($valor,$expresion)){
+                if (ScPHP::str_regex_incluye($valor,$expresion)){
                     return true;
                 }
             }
