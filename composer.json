@@ -1,0 +1,19 @@
+{
+    "name": "yosoymitxel/scphp",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ScPHPLibrary\\": "src/ScPHPLibrary/"
+        },
+        "psr-0": {
+            "ScPHPLibrary\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yosoymitxel",
+            "email": "yosoymitxel@gmail.com"
+        }
+    ],
+    "require": {}
+}
