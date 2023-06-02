@@ -8,13 +8,13 @@ Este se divide en distintas finalidades de funciones usando como prefijo para to
 
 #### Ejemplos:
 ```
-sc_dev_var_dump('prueba')
+ScPHP::dev_var_dump('prueba')
 ```
-Donde `sc_` es el prefijo de la librería y `dev_` indica que será del grupo development.
+Donde `ScPHP::` es la librería y `dev_` indica que será del grupo development.
 ```
 sc_str_contiene('Hola mundo', 'Hola');
 ```
-Donde `sc_` es el prefijo de la librería y `str_` indica que será del grupo de manejo strings.
+Donde `ScPHP::` es la librería y `str_` indica que será del grupo de manejo strings.
 
 ### 1) DEV
 Aquí encontramos funciones para hacer testeos rápidos siguiendo la filosofía "echo a todo lo que se mueva" asímismo poner información solo visible desde el DOM, etc.
